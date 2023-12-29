@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -25,6 +26,7 @@ class AuthController extends Controller
                 $request->session()->regenerate();
 
                 return redirect()->route('dashboard_admin');
+
             }
 
             return redirect()->route('login');
@@ -43,5 +45,18 @@ class AuthController extends Controller
                 return redirect()->route('login');
             }
         }
+    }
+
+    public function register(Request $request)
+    {
+        $user = Siswa::create([
+            'name' => $request->name,
+            'kelas' => $request->kelas,
+            'email' => $request->email,
+            'role_status' => 'siswa',
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect()->route('login');
     }
 }

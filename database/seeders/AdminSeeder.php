@@ -20,6 +20,8 @@ class AdminSeeder extends Seeder
                 'role_status' => 'admin',
                 'email' => 'rafi@gmail.com',
                 'password' => Hash::make('rafi1234'),
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ];
 
@@ -29,6 +31,8 @@ class AdminSeeder extends Seeder
                 'role_status' => $val['role_status'],
                 'email' => $val['email'],
                 'password' => $val['password'],
+                'created_at' => $val['created_at'],
+                'updated_at' => $val['updated_at']
             ]);
         }
     }

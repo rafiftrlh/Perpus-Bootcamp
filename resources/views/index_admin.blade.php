@@ -1,15 +1,18 @@
 @extends('layouts.main_index_admin')
 @section('main_index')
     {{-- content --}}
-    <button type="button" class="btn btn-primary">. . .</button>
 
     <div class="container-fluid py-4">
         <div class="container-fluid py-4">
+            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createBuku">
+                Buat Buku
+            </button>
+            @include('partials.buku.create_buku')
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Peminjaman Buku</h6>
+                            <h6>Perpustakaan</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -31,21 +34,31 @@
                                     <tbody>
                                         @foreach ($bukus as $buku)
                                             <tr>
-                                                <td>
+                                                <td class="px-3">
                                                     <p class="text-xs text-secondary mb-0">{{ $buku->judul }}</p>
                                                 </td>
-                                                <td>
+                                                <td class="px-3">
                                                     <p class="text-xs text-secondary mb-0">{{ $buku->penerbit }}</p>
                                                 </td>
-                                                <td>
+                                                <td class="px-3">
                                                     <p class="text-xs text-secondary mb-0">{{ $buku->pengarang }}</p>
                                                 </td>
-                                                <td>
+                                                <td class="px-3">
                                                     <p class="text-xs text-secondary mb-0">{{ $buku->stok_buku }}</p>
                                                 </td>
-                                                <td class="">
-                                                    <button type="button" class="btn btn-info">Edit</button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                <td class="d-flex gap-3">
+                                                    <button type="button" class="btn bg-gradient-info"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#editBuku_{{ $buku->id }}"
+                                                        data-book-id="{{ $buku->id }}">
+                                                        Edit
+                                                    </button>
+                                                    @include('partials.buku.edit_buku')
+                                                    <form action="{{ route('buku.delete', $buku->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

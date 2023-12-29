@@ -21,6 +21,8 @@ class SiswaSeeder extends Seeder
                 'role_status' => 'siswa',
                 'email' => 'raji@gmail.com',
                 'password' => Hash::make('raji1234'),
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ];
         foreach ($data as $val) {
@@ -30,6 +32,8 @@ class SiswaSeeder extends Seeder
                 'role_status' => $val['role_status'],
                 'email' => $val['email'],
                 'password' => $val['password'],
+                'created_at' => $val['created_at'],
+                'updated_at' => $val['updated_at']
             ]);
         }
     }

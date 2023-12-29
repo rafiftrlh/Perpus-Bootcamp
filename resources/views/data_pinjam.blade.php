@@ -1,4 +1,4 @@
-@extends('layouts.main_index')
+@extends('layouts.main_index_admin')
 @section('main_index')
     {{-- content --}}
     <div class="container-fluid py-4">
@@ -7,7 +7,7 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Perpustakaan</h6>
+                            <h6>Data Peminjaman</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -16,16 +16,22 @@
                                         <tr>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs align-middle font-weight-bolder opacity-7">
-                                                Judul</th>
+                                                Id</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs align-middle font-weight-bolder opacity-7">
-                                                Penerbit</th>
+                                                Id Siswa</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs align-middle font-weight-bolder opacity-7">
-                                                Penulis</th>
+                                                Nama Siswa</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs align-middle font-weight-bolder opacity-7">
-                                                Stok Buku</th>
+                                                Id Buku</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs align-middle font-weight-bolder opacity-7">
+                                                Nama Buku</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs align-middle font-weight-bolder opacity-7">
+                                                Qty</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs align-middle font-weight-bolder opacity-7">
                                                 Update At</th>
@@ -35,34 +41,35 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($bukus as $buku)
+                                        @foreach ($trxs as $trx)
                                             <tr>
                                                 <td class="px-4">
-                                                    <p class="text-xs text-secondary mb-0">{{ $buku->judul }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $trx->id }}</p>
                                                 </td>
                                                 <td class="px-4">
-                                                    <p class="text-xs text-secondary mb-0">{{ $buku->penerbit }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $trx->siswa_id }}</p>
                                                 </td>
                                                 <td class="px-4">
-                                                    <p class="text-xs text-secondary mb-0">{{ $buku->pengarang }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $trx->name_siswa }}</p>
                                                 </td>
                                                 <td class="px-4">
-                                                    <p class="text-xs text-secondary mb-0">{{ $buku->stok_buku }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $trx->buku_id }}</p>
                                                 </td>
                                                 <td class="px-4">
-                                                    <p class="text-xs text-secondary mb-0">{{ $buku->updated_at }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $trx->name_buku }}</p>
+                                                </td>
+                                                <td class="px-4">
+                                                    <p class="text-xs text-secondary mb-0">{{ $trx->qty }}</p>
+                                                </td>
+                                                <td class="px-4">
+                                                    <p class="text-xs text-secondary mb-0">{{ $trx->updated_at }}</p>
                                                 </td>
                                                 <td class="d-flex gap-3">
-                                                    {{-- <button type="button" class="btn bg-gradient-info"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#pinjamBuku_{{ $buku->id }}"
-                                                        data-book-id="{{ $buku->id }}">
-                                                        Pinjam
-                                                    </button> --}}
-                                                    <form action="{{ route('pinjam_buku', $buku->id) }}" method="POST">
+                                                    <form action="{{ route('data_pinjam.delete', $trx->id) }}"
+                                                        method="POST">
                                                         @csrf
-                                                        @method('POST')
-                                                        <button type="submit" class="btn btn-info">Pinjam</button>
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

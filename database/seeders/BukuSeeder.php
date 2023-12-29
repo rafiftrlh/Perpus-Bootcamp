@@ -19,6 +19,8 @@ class BukuSeeder extends Seeder
                 'penerbit' => 'SMKS Taruna Bhakti',
                 'pengarang' => 'Bu Miranda',
                 'stok_buku' => 10,
+                'created_at' => now(),
+                'updated_at' => now()
             ]];
 
         foreach ($data as $val) {
@@ -27,6 +29,8 @@ class BukuSeeder extends Seeder
                 'penerbit' => $val['penerbit'],
                 'pengarang' => $val['pengarang'],
                 'stok_buku' => $val['stok_buku'],
+                'created_at' => $val['created_at'],
+                'updated_at' => $val['updated_at']
             ]);
         }
     }

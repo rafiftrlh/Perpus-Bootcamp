@@ -3,17 +3,38 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html "
-            target="_blank">
-            <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">Soft UI Dashboard</span>
+        <a class="navbar-brand m-0" href="{{ route('profile_admin') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                    d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z">
+                </path>
+            </svg>
+            <span class="ms-1 font-weight-bold">Profile</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link  active" href="{{ route('dashboard_admin') }}">
+                <a class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}"
+                    href="{{ route('dashboard_admin') }}">
+
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            style="fill: {{ request()->is('admin/dashboard') ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 1)' }} ;transform: ;msFilter:;">
+                            <path
+                                d="M7 3h2v18H7zM4 3h2v18H4zm6 0h2v18h-2zm9.062 17.792-6.223-16.89 1.877-.692 6.223 16.89z">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="nav-link-text ms-1">Perpustakaan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('admin/data_pinjam') ? 'active' : '' }}"
+                    href="{{ route('data_pinjam') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -35,56 +56,26 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">Peminjaman</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="../pages/tables.html">
+                <a class="nav-link {{ request()->is('admin/data_siswa') ? 'active' : '' }}"
+                    href="{{ route('data_siswa') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>office</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g id="office" transform="translate(153.000000, 2.000000)">
-                                            <path class="color-background opacity-6"
-                                                d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z">
-                                            </path>
-                                            <path class="color-background"
-                                                d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            style="fill: {{ request()->is('admin/data_siswa') ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 1)' }} ;transform: ;msFilter:;">
+                            <path
+                                d="M20 6c0-2.168-3.663-4-8-4S4 3.832 4 6v2c0 2.168 3.663 4 8 4s8-1.832 8-4V6zm-8 13c-4.337 0-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3c0 2.168-3.663 4-8 4z">
+                            </path>
+                            <path d="M20 10c0 2.168-3.663 4-8 4s-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3z">
+                            </path>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Tables</span>
+                    <span class="nav-link-text ms-1">Data Siswa</span>
                 </a>
             </li>
         </ul>
-    </div>
-    <div class="sidenav-footer mx-3 ">
-        <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-            <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpg')">
-            </div>
-            <div class="card-body text-start p-3 w-100">
-                <div
-                    class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
-                    <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
-                        id="sidenavCardIcon"></i>
-                </div>
-                <div class="docs-info">
-                    <h6 class="text-white up mb-0">Need help?</h6>
-                    <p class="text-xs font-weight-bold">Please check our docs</p>
-                    <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard"
-                        target="_blank" class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
-                </div>
-            </div>
-        </div>
-        <a class="btn bg-gradient-primary mt-3 w-100"
-            href="https://www.creative-tim.com/product/soft-ui-dashboard-pro?ref=sidebarfree">Upgrade to pro</a>
     </div>
 </aside>
